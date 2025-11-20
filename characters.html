@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.container {
+  position: relative;
+  width: 50%;
+  
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #008CBA;
+}
+
+.container:hover .overlay {
+  opacity: 1;
+}
+
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+  body {
+    background-image: url("https://i.pinimg.com/736x/7b/a0/3e/7ba03e53ac468599cad71c58368af3b2.jpg");
+background-repeat: no-repeat;
+background-size: cover;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    background-image: linear-gradient(to right, #ff7e5f, #feb47b);
+    padding: 20px;
+    border-radius: 10px;
+    color: whitesmoke;
+}
+
+</style>
+</head>
+<body>
+<h1>The Legacys of Hexus </h1>
+<h2>Characters</h2>
+<p>Book 1 main Characters.</p>
+
+<div class="container">
+  <img src="https://alchetron.com/cdn/captain-flint-dbfa9400-c2c3-4e38-84b4-72e673d6e59-resize-750.jpeg" alt="Avatar" class="image">
+  <div class="overlay">
+    <div class="text">Bill Anron</div>
+  </div>
+</div>
+
+<div class="container">
+  <img src="https://cdn.wallpapersafari.com/56/19/FoU8kZ.jpg" alt="Avatar" class="image">
+  <div class="overlay">
+    <div class="text">Sylvia Valdeck</div>
+  </div>
+</div>
+
+</body>
+</html>
