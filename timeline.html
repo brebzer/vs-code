@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timeline</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #2f3030;
+      font-family: Helvetica, sans-serif;
+    }
+
+    /* The actual timeline (the vertical ruler) */
+    .timeline {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .timeline::after {
+      content: '';
+      position: absolute;
+      width: 6px;
+      background-color: white;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -3px;
+    }
+
+    /* Container around content */
+    .container {
+      padding: 10px 40px;
+      position: relative;
+      background-color: inherit;
+      width: 50%;
+    }
+
+    /* The circles on the timeline */
+    .container::after {
+      content: '';
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      right: -17px;
+      background-color: white;
+      border: 4px solid #FF9F55;
+      top: 15px;
+      border-radius: 50%;
+      z-index: 1;
+    }
+
+    .left {
+      left: 0;
+    }
+
+    .right {
+      left: 50%;
+    }
+
+    /* Arrows */
+    .left::before {
+      content: " ";
+      position: absolute;
+      top: 22px;
+      right: 30px;
+      border: 10px solid transparent;
+      border-left-color: white;
+    }
+
+    .right::before {
+      content: " ";
+      position: absolute;
+      top: 22px;
+      left: 30px;
+      border: 10px solid transparent;
+      border-right-color: white;
+    }
+
+    .right::after {
+      left: -16px;
+    }
+
+    /* Content box */
+    .content {
+      padding: 20px 30px;
+      background-color: white;
+      border-radius: 6px;
+    }
+
+    /* Responsive layout */
+    @media screen and (max-width: 600px) {
+      .timeline::after {
+        left: 31px;
+      }
+
+      .container {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+      }
+
+      .container::before {
+        left: 60px;
+        border: 10px solid transparent;
+        border-right-color: white;
+      }
+
+      .left::after,
+      .right::after {
+        left: 15px;
+      }
+
+      .right {
+        left: 0%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+<h1>The Age of Gods</h1>
+<h2>6000 PS - 3000 PS</h2>
+<p> The time of legends and folklore when the Gods ruled Hexus. During this time each race would see the cruelty of the gods and overthrow them in turn. From Suren the language of Alerian (derived from the word Alert) is developed and sailers are sent across Hexus, in a means to understand eachother and warn the other races should the gods return....</p>
+
+
+
+  <div class="timeline">
+    <div class="container left">
+      <div class="content">
+        <h2> -2000 AS</h2>
+        <p>The Dawn of the Diamond kings</p>
+        <p2>The First Diamond King unites the waring Seraphim race under a single country, Gurog.</p2>
+      </div>
+      </div>
+    </div>
+
+    <div class="container right">
+      <div class="content">
+        <h2>-1000 AS -160 A</h2>
+   <p>
+The Seperation of the Seraphim
+    </p>
+    <p>
+Growing unrest and cultural differences causes the Seraphim to split into four sects. Sinahara, Shagar, Meraxus and Seraph</p>
+      </div>
+    </div>
+
+  <div class="timeline">
+    <div class="container left">
+      <div class="content">
+        <h2> -160 AS</h2>
+        <p>The Fall of the Diamond Kingdom</p>
+        <p2>The Last of the Diamond Kings, known as the Glass Woman is killed during an uprising by Sect Meraxus, Their line ended and kingdom disolved.</p2>
+      </div>
+      </div>
+    
+</body>
+</html>
