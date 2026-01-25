@@ -6,169 +6,567 @@
   <title>Timeline</title>
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      background-color: #2f3030;
-      font-family: Helvetica, sans-serif;
-    }
-    footer {
-    text-align: center;
-    margin-top: 50px;
-    color: whitesmoke;
+   * {
+  box-sizing: border-box;
 }
 
-    /* The actual timeline (the vertical ruler) */
-    .timeline {
-      position: relative;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+/* Set a background color */
+body {
+  background-color: #474e5d;
+  font-family: Helvetica, sans-serif;
+}
 
-    .timeline::after {
-      content: '';
-      position: absolute;
-      width: 6px;
-      background-color: white;
-      top: 0;
-      bottom: 0;
-      left: 50%;
-      margin-left: -3px;
-    }
+/* The actual timeline (the vertical ruler) */
+.timeline {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
-    /* Container around content */
-    .container {
-      padding: 10px 40px;
-      position: relative;
-      background-color: inherit;
-      width: 50%;
-    }
+/* The actual timeline (the vertical ruler) */
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  background-color: white;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -3px;
+}
 
-    /* The circles on the timeline */
-    .container::after {
-      content: '';
-      position: absolute;
-      width: 25px;
-      height: 25px;
-      right: -17px;
-      background-color: white;
-      border: 4px solid #FF9F55;
-      top: 15px;
-      border-radius: 50%;
-      z-index: 1;
-    }
+/* Container around content */
+.container {
+  padding: 10px 40px;
+  position: relative;
+  background-color: inherit;
+  width: 50%;
+}
 
-    .left {
-      left: 0;
-    }
+/* The circles on the timeline */
+.container::after {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  right: -17px;
+  background-color: white;
+  border: 4px solid #FF9F55;
+  top: 15px;
+  border-radius: 50%;
+  z-index: 1;
+}
 
-    .right {
-      left: 50%;
-    }
+/* Place the container to the left */
+.left {
+  left: 0;
+}
 
-    /* Arrows */
-    .left::before {
-      content: " ";
-      position: absolute;
-      top: 22px;
-      right: 30px;
-      border: 10px solid transparent;
-      border-left-color: white;
-    }
+/* Place the container to the right */
+.right {
+  left: 50%;
+}
 
-    .right::before {
-      content: " ";
-      position: absolute;
-      top: 22px;
-      left: 30px;
-      border: 10px solid transparent;
-      border-right-color: white;
-    }
+/* Add arrows to the left container (pointing right) */
+.left::before {
+  content: " ";
+  height: 0;
+  position: absolute;
+  top: 22px;
+  width: 0;
+  z-index: 1;
+  right: 30px;
+  border: medium solid white;
+  border-width: 10px 0 10px 10px;
+  border-color: transparent transparent transparent white;
+}
 
-    .right::after {
-      left: -16px;
-    }
+/* Add arrows to the right container (pointing left) */
+.right::before {
+  content: " ";
+  height: 0;
+  position: absolute;
+  top: 22px;
+  width: 0;
+  z-index: 1;
+  left: 30px;
+  border: medium solid white;
+  border-width: 10px 10px 10px 0;
+  border-color: transparent white transparent transparent;
+}
 
-    /* Content box */
-    .content {
-      padding: 20px 30px;
-      background-color: white;
-      border-radius: 6px;
-    }
+/* Fix the circle for containers on the right side */
+.right::after {
+  left: -16px;
+}
 
-    /* Responsive layout */
-    @media screen and (max-width: 600px) {
-      .timeline::after {
-        left: 31px;
-      }
+/* The actual content */
+.content {
+  padding: 20px 30px;
+  background-color: white;
+  position: relative;
+  border-radius: 6px;
+}
 
-      .container {
-        width: 100%;
-        padding-left: 70px;
-        padding-right: 25px;
-      }
+/* Media queries - Responsive timeline on screens less than 600px wide */
+@media screen and (max-width: 600px) {
+/* Place the timelime to the left */
+  .timeline::after {
+    left: 31px;
+  }
 
-      .container::before {
-        left: 60px;
-        border: 10px solid transparent;
-        border-right-color: white;
-      }
+/* Full-width containers */
+  .container {
+    width: 100%;
+    padding-left: 70px;
+    padding-right: 25px;
+  }
 
-      .left::after,
-      .right::after {
-        left: 15px;
-      }
+/* Make sure that all arrows are pointing leftwards */
+  .container::before {
+    left: 60px;
+    border: medium solid white;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent white transparent transparent;
+  }
 
-      .right {
-        left: 0%;
-      }
-    }
+/* Make sure all circles are at the same spot */
+  .left::after, .right::after {
+    left: 15px;
+  }
+
+/* Make all right containers behave like the left ones */
+  .right {
+    left: 0%;
+  }
+}
   </style>
 </head>
 
-<body>
-<h1>The Age of Gods</h1>
-<h2>6000 PS - 3000 PS</h2>
-<p> The time of legends and folklore when the Gods ruled Hexus. During this time each race would see the cruelty of the gods and overthrow them in turn. From Suren the language of Alerian (derived from the word Alert) is developed and sailers are sent across Hexus, in a means to understand eachother and warn the other races should the gods return....</p>
+<h2>Dynasty of the Diamond kings</h2>
+<p>2001 PS 160 PS</p>
 
+<p>The time of unity in Gurog under the Regin of the Diamond Kings</p>
 
+<div class="timeline">
+  <div class="container left">
+    <div class="content">
+      <h2>-2000 AS </h2>
+      <h2>
+The Dawn of the Diamond kings
+Founding </h2>
+      <p>The First Diamond King unites the waring Seraphim race under a single country, Gurog.</p>
+    </div>
+  </div>
+  <div class="container right">
+    <div class="content">
+      <h2> -1000 AS > -160 AS</h2>
+<h2>The Seperation of the Seraphim</h2>
+      <p>Growing unrest and cultural differences causes the Seraphim to split into four sects. Sinahara, Shagar, Meraxus and Seraph</p>
+    </div>
+  </div>
+  <div class="container left">
+    <div class="content">
+      <h2> -160 AS
+</h2>
+      <h2>The Fall of the Diamond Kingdom</h2>
+      <p>The Last of the Diamond Kings, known as the Glass Woman is killed during an uprising by Sect Meraxus, Their line ended and kingdom disolved.</p>
+    </div>
+    </div>
+    </div>
 
-  <div class="timeline">
-    <div class="container left">
-      <div class="content">
-        <h2> -2000 AS</h2>
-        <p>The Dawn of the Diamond kings</p>
-        <p2>The First Diamond King unites the waring Seraphim race under a single country, Gurog.</p2>
-      </div>
-      </div>
+   <h2>The Sowing of Nevina</h2>
+   <p>0 PS > 34 AS</p>
+
+   <p>The era of Nevina's heros and the war that shaped it future</p>
+
+<div class="timeline">
+    <div class="container right">
+    <div class="content">
+      <h2> 0 AS</h2>
+      <h2>The Hunter's emergence</h2>
+      <p>The mysterious Borganstien arrives in Nevina and kills the Titan hydra, he is dubbed The Hydra Hunter.</p>
+    </div>
+  </div>
+  <div class="container left">
+    <div class="content">
+      <h2>2 AS </h2>
+      <h2>Formation of Clan Hydra</h2>
+      <p>The Hunters followers offically form Clan Hydra</p>
+    </div>
+  </div>
+  <div class="container right">
+    <div class="content">
+      <h2>5 AS</h2>
+      <h2>The Devastation of Makon</h2>
+      <p>The Demon, Diro possesses a dying solider and destroys Makon, leaving the region a cursed wasteland.</p>
+    </div>
+  </div>
+  <div class="container left">
+    <div class="content">
+      <h2>6 AS </h2>
+      <h2>The Fall of the Undead</h2>
+      <p>The Hunter battles and defeats the Undead. Finding the cursed blade and corrupting him.</p>
+    </div>
+  </div>
+  <div class="container right">
+    <div class="content">
+      <h2> 6 AS</h2>
+      <h2>Beginning of the Hunter's campaign</h2>
+      <p>The Hunter begins his campaign against the forces of darkness, seeking to rid the land of evil.</p>
+    </div>
+  </div>
+  <div class="container left">
+    <div class="content">
+      <h2> 10 AS</h2>
+      <h2>The Kraken - Hydra alliance formation</h2>
+      <p>After gaining in power, the Hunter allies with the Kraken lords, Hector and Terra.</p>
+    </div>
+  </div>
+  <div class="container right">
+    <div class="content">
+      <h2> 10 AS</h2>
+      <h2>The Minotaur - Griffin alliance formation</h2>
+      <p>The Minotaur Knight contacts and readies Griffin Master Goff for war, the two clans ally against the invaders.</p>
+    </div>
+  </div>
+  <div class="container left">
+    <div class="content">
+      <h2> 10 AS > 16 AS </h2>
+      <h2>The Sowing War</h2>
+      <p>The war between the Hydra - Kraken alliance and the Minotaur - Griffin alliance</p>
+    </div>
+  </div>
+  <div class="container right">
+    <div class="content">
+      <h2>16 AS</h2>
+      <h2>The Kraken Betrayal</h2>
+      <p>The Hunter knowingly sends the Kraken Army to a Griffin ambush. Both the Kraken and Griffin armies are badly weakened.</p>
+    </div>
+  </div>
+  <div class="container left">
+    <div class="content">
+      <h2> 16 AS </h2>
+      <h2>The Battle of Erros</h2>
+      <p>The final battle Between Hydra and Minotaur, resulting in a Minotaur Victory</p>
+    </div>
+  </div>
+  <div class="container right">
+    <div class="content">
+      <h2> 31 AS</h2>
+      <h2>The Nevina Guardians formation</h2>
+      <p>The Nevina Guardians are formed by Taynor, the Minotaur Knight.</p>
+    </div>
+  </div>
+  <div class="container left">
+    <div class="content">
+      <h2> 32 AS </h2>
+      <h2>Founding Clan Phoenix</h2>
+      <p>Clan Phoenix is offically formed by the survivors living in Makon.</p>
+    </div>
+  </div>
+  <div class="container right">
+    <div class="content">
+      <h2>  34 AS</h2>
+      <h2>The First Human Elder</h2>
+      <p>Taynor becomes the first Human Elder in an effort to maintain peace in Nevina</p>
+    </div>
+  </div>
+  </div>
+
+  <h2>The Sera invasion</h2>
+   <p> 52 AS > 64 AS </p>
+<div class="timeline">
+  <div class="container left">
+    <div class="content">
+      <h2> 52 AS </h2>
+      <h2>The Immergence of the Sera</h2>
+      <p>The previously forgotten race invade Nevina from the northern continient of Suren.</p>
+    </div>
+  </div>
+  <div class="container right">
+    <div class="content">
+      <h2>  53 AS > 61 AS </h2>
+<h2>The Frost War</h2>
+      <p>The War between the Humans and the Sera, the fighting mainly in the northern regions of Makon and Abakon</p>
+    </div>
+  </div>
+  <div class="container left">
+    <div class="content">
+      <h2> 61 AS </h2>
+      <h2>Nevina's Surrender</h2>
+      <p>The humans Surrender to the Sera and the elderly Taynor is sent north to Suren to negotiate.</p>
+    </div>
     </div>
 
     <div class="container right">
       <div class="content">
-        <h2>-1000 AS -160 A</h2>
-   <p>
-The Seperation of the Seraphim
-    </p>
-    <p>
-Growing unrest and cultural differences causes the Seraphim to split into four sects. Sinahara, Shagar, Meraxus and Seraph</p>
+        <h2>  63 AS</h2>
+        <h2>Death of Elder Taynor</h2>
+        <p>Taynor dies while in Suren</p>
+      </div>
+    </div>
+  <div class="container left">
+    <div class="content">
+      <h2> 64 AS </h2>
+      <h2>The Suren - Nevina boarder pact</h2>
+      <p>The new Elder's of Suren and Nevina make peace and agree to maintain their boarders and trade goods, on the condition that the Sera are allowed access to the Makon wasteland.</p>
+    </div>
+    </div>
+    </div>
+
+    <h2>The Hileon Expansion</h2>
+<p>157 AS > 370 AS</p>
+
+<div class="timeline">
+  <div class="container left">
+    <div class="content">
+      <h2> 158 AS</h2>
+      <h2> Voyage to Hileon </h2>
+      <p>The minor factions of House Black and Clan Centaur set sail on a voyage to the continent of Hileon. There they settled the region of Rucken to the north.</p>
+    </div>
+  </div>
+  <div class="container right">
+    <div class="content">
+      <h2>  165 AS</h2>
+<h2>Formation of House Blackryne</h2>
+      <p>House Black and Clan Centaur join together through marriage and formed House Blackryne</p>
+    </div>
+  </div>
+  <div class="container left">
+    <div class="content">
+      <h2>  340 AS > 362 AS </h2>
+      <h2>The Mongel Uprising</h2>
+      <p>Rebel groups believing the control and regulation of breeding, in order to create the perfect race rises up in in Hileon. They attempt to overthrow House Blackryne and carry out a gurrila war on their lords.</p>
+    </div>
+    </div>
+    </div>
+    <h2>The Pre War Era</h2>
+   <p> 500 AS > 900 AS </p>
+
+   <div class="timeline">
+  <div class="container right">
+    <div class="content">
+      <h2> 515 AS </h2>
+      <h2> Formation of House Mardeck </h2>
+      <p>After a controversial naming of the Valdeck heir, the eldest son breaks away to form the Sera House Mardeck.</p>
+    </div>
+  </div>
+  <div class="container left">
+    <div class="content">
+      <h2>   548 AS</h2>
+<h2>First voyage to Astereen</h2>
+      <p>Clan Kraken send explorers to the uncharted land of Astereen.</p>
+    </div>
+  </div>
+  <div class="container right">
+    <div class="content">
+      <h2>   621 AS </h2>
+      <h2>Settlement of Charonia</h2>
+      <p>the coastal city of Charonia is settled and quickly becomes a haven for bandits and piratesthe coastal city of Charonia is settled and quickly becomes a haven for bandits and pirates.</p>
+    </div>
+    </div>
+    </div>
+
+   <h2>The King's era</h2>
+<p> 900 As > 1100 As </p>
+
+    <div class="timeline">
+    <div class="container left">
+      <div class="content">
+        <h2>  958 AS </h2>
+        <h2> Shogaroth appears </h2>
+        <p>A mysterious stranger by the name of Shogaroth appears to a band of nomads in the Morco region of Gurog
+</p>
+      </div>
+    </div>
+    <div class="container right">
+      <div class="content">
+        <h2>    969 AS</h2>
+<h2> Korum Steelborne is born</h2>
+        </div>
+    </div>
+    <div class="container left">
+      <div class="content">
+        <h2>    969 AS </h2>
+        <h2> Fall of Sect Seraph </h2>
+        <p>After years of infiltration, Shogaroths followers successfully overthrow the Seraph leadership and are replaced by Shogaroth</p>
+      </div>
+    </div>
+    <div class="container right">
+      <div class="content">
+        <h2>  973 AS </h2>
+        <h2> Remock is born </h2>
+</div>
+    </div>
+
+<div class="container left">
+      <div class="content">
+        <h2>   973 AS </h2>
+        <h2> Sylvia Valdeck is born</h2>
+        <p>In Rhiora city a poor and dying woman gives birth to a daughter</p>
+      </div>
+    </div>
+    <div class="container right">
+      <div class="content">
+        <h2>   973 AS > 980 AS </h2>
+        <h2> The war of Norag </h2>
+        <p>Shogaroth invades the Meraxus lands and the two sides engage in a brutal war.</p>
+</div>
+    </div>
+    <div class="container left">
+      <div class="content">
+        <h2>   973 AS </h2>
+        <h2> Sylvia Valdeck is born</h2>
+        <p>In Rhiora city a poor and dying woman gives birth to a daughter</p>
+      </div>
+    </div>
+    <div class="container right">
+      <div class="content">
+        <h2>   973 AS > 980 AS </h2>
+        <h2> The war of Norag </h2>
+        <p>Shogaroth invades the Meraxus lands and the two sides engage in a brutal war.</p>
+</div>
+    </div>
+    <div class="container left">
+      <div class="content">
+        <h2>   973 AS </h2>
+        <h2> Sylvia Valdeck is born</h2>
+        <p>In Rhiora city a poor and dying woman gives birth to a daughter</p>
+      </div>
+    </div>
+    <div class="container right">
+      <div class="content">
+        <h2>   973 AS > 980 AS </h2>
+        <h2> The war of Norag </h2>
+        <p>Shogaroth invades the Meraxus lands and the two sides engage in a brutal war.</p>
+</div>
+    </div>
+    <div class="container left">
+      <div class="content">
+        <h2>    978 AS </h2>
+        <h2> The pledge of Sect Shagar</h2>
+        <p>As the war turns in Shogaroths favour, Sect Shagar pledges allegiance to Shogaroth. all but ensuring his victory.</p>
+      </div>
+    </div>
+    <div class="container right">
+      <div class="content">
+        <h2> 980 AS  </h2>
+        <h2> Surrender of Sect Meraxus </h2>
+        <p>The final battle of the Meraxus war ends with a dual between Shogaroth and Argan Yarr. though Argan does not submit, his army lays down their weapons to save his life. Meraxus bows to Shogaroth.</p>
+</div>
+    </div>
+    <div class="container left">
+      <div class="content">
+        <h2>  982 AS</h2>
+        <h2> The pledge of Sect Sinahara</h2>
+        <p>Shogaroth marches on Helgan. knowing they have no choice, the death worshippers surrender and join him.</p>
+      </div>
+    </div>
+    <div class="container right">
+      <div class="content">
+        <h2> 982 AS  </h2>
+        <h2> Shogaroth is crowned High King </h2>
+        <p>With Gurog now united, Shogaroth declares himself High King of Hexus.</p>
+</div>
+    </div>
+    </div>
+
+      <h2>The Conquest War</h2>
+<p>  983 AS > 1013 AS </p>
+
+    <div class="timeline">
+    <div class="container left">
+      <div class="content">
+        <h2>  983 AS </h2>
+        <h2> The Conquest War begins </h2>
+        <p>after months of raids and invasions into Eastern Hileon, the Human and Sera elders declare war.</p>
+      </div>
+    </div>
+    <div class="container right">
+      <div class="content">
+        <h2>    983 AS</h2>
+<h2> Sylvia is adopted by Ropp Valdeck</h2>
+        <p>the street orphan Sylvia is adopted by Ropp after he notices she can use an animal as a familiar (an ancient Valdeck trait)</p>
+      </div>
+    </div>
+    <div class="container left">
+      <div class="content">
+        <h2>   985 AS  </h2>
+        <h2> Korum becomes a gladiator </h2>
+        <p>Korum travels to Charonia to fight as a gladiator.</p>
+      </div>
+    </div>
+    <div class="container right"> 
+      <div class="content">
+        <h2>  989 AS</h2>
+        <h2> The Sokoto Assault</h2>
+        <p>Lord Ropp Valdeck and house Thornefeld are able to hold off a Meraxus invasion force, however Ropp is crippled during the fight</p>
+      </div>
+    </div>
+<div class="container left">
+      <div class="content">
+        <h2>    993 AS  </h2>
+        <h2> Bill Anron is born </h2>
+      </div>
+    </div>
+    <div class="container right"> 
+      <div class="content">
+        <h2>  1013 AS </h2>
+        <h2> The Battle of Rucken</h2>
+        <p>The major battle of Rucken where the young Guardian Bill Anron destroyed the Meraxus ships and was christened the Sea Runner.</p>
+      </div>
+    </div>
+<div class="container left">
+      <div class="content">
+        <h2>     1013 AS  </h2>
+        <h2> The Bane Massacre</h2>
+        <p>Following the Battle of Rucken, the Human and Sera forces led by Sir Ramsay Bane attempt to pursue the enemy army into the Hileon Wastes. But are betrayed by the Bane army and are quickly overwhelmed, resulting in a devastating defeat.</p>
+      </div>
+    </div>
+  
+  <div class="container right"> 
+      <div class="content">
+        <h2>  1013 AS </h2>
+        <h2> The Royal Gauntlet</h2>
+        <p>In the aftermath of the Bane Massacre, the remaining Human and Sera forces are forced to accept the terms of Shogaroth, and agree to settle the conflict in a series of duels known as the Royal Gauntlet against Shogaroth himself. In the end all the Sera and Human champions are defeated.</p>
       </div>
     </div>
 
-  <div class="timeline">
-    <div class="container left">
+<div class="container left">
       <div class="content">
-        <h2> -160 AS</h2>
-        <p>The Fall of the Diamond Kingdom</p>
-        <p2>The Last of the Diamond Kings, known as the Glass Woman is killed during an uprising by Sect Meraxus, Their line ended and kingdom disolved.</p2>
+        <h2>     1013 AS  </h2>
+        <h2> Shogaroth is Crowned High King of Hexus</h2>
+        <p>Following his victory in the Royal Gauntlet, Shogaroth is crowned the High King of Hexus.</p>
       </div>
+    </div>
+  
+ <div class="container right"> 
+      <div class="content">
+        <h2>   1036 AS </h2>
+        <h2> Elder Quintas begins campaigning for freedom</h2>
+        <p>The Human elder Quintas begins calling for independence from Shogaroth.</p>
       </div>
+    </div>
+
+    <div class="container left"> 
+      <div class="content">
+        <h2>   1037 AS </h2>
+        <h2> The fall of Erros</h2>
+        <p>In retaliation, Shogaroth sends the Mongrel Gremnal to lay siege on Erros and sack it.</p>
+      </div>
+    </div>
+
+     <div class="container right"> 
+      <div class="content">
+        <h2>   1037 AS </h2>
+        <h2> Beginning of Book 1</h2>
+        <p>Our story begins.....</p>
+      </div>
+    </div>
+    </div>
+
     
-      <footer>
-  <p>Author: Bryan Nalty<br>
-  <a href="mailto:bryannalty@gmail.com">bryannalty@gmail.com</a></p>
-</footer>
 
 </body>
 </html>
