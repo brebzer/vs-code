@@ -105,6 +105,23 @@ iframe {
 
 <h1>The Legacys of Hexus</h1>
 
+<div class="container text-center">
+  <div class="row">
+    <div class="col">
+        Charaters
+    </div>
+    <div class="col">
+      Locations
+    </div>
+    <div class="col">
+      Races
+    </div>
+    <div class="col">
+      Timeline
+   </div>
+  </div>
+</div>
+
 <div class="parent">
 
 <table>
@@ -125,15 +142,45 @@ allow="autoplay"></iframe>
 
 <!-- Text sections -->
 <div id="Suren-location" class="location">
-<p>Suren text content goes here</p>
+<p>Suren is the homeland of the Sera race. It is a perpetually cold and harsh land, full of ancient history and dark secrets. <br>
+    <li>Mist Isles: These fabled islands are under the lordship of House Hannibal, known for their treacherous people and labyrinthine waters.</li>
+    <br>
+    <li>Socoto: The northern most region, Controlled by House Valdeck is known for its vast forests and tough people.</li>
+    <br>
+    <li>Nos: The Eastern region, controlled by House Delavega, known for its mountainous terrain and fierce pride.</li>
+    <br>
+    <li>Nidora: Controlled by the wealthy House Steelborne, Nidora boarders the southern continent of Nevina. They are known not only for their strength and rich resources, but also their tolerance and welcoming nature.</li>
+    <br>
+    <li>Shinsis: The remote and mysterious land to the east, is home to House Whitewind. It is know to be both a hostile and hidden place.</li>
+</p>
 </div>
 
 <div id="Nevina-location" class="location">
-<p>Nevina text content goes here</p>
+<p>Nevina is the homeland of the Human race. It is a temperate region characterized by its lush forests and fertile plains. <br>
+    <li>Abakon: Controlled by Clan Kraken, they are famed for their use of exotic plants to fight as berserkers. The region is known for its cold climate.</li>
+    <br>
+    <li>Makon: The northern most region, Controlled by House Valdeck is known for its vast forests and tough people.</li>
+    <br>
+    <li>Dune: The Eastern region, controlled by House Delavega, known for its mountainous terrain and fierce pride.</li>
+    <br>
+    <li>Evergreen Grove: Controlled by the wealthy House Steelborne, Nidora boarders the southern continent of Nevina. They are known not only for their strength and rich resources, but also their tolerance and welcoming nature.</li>
+    <br>
+    <li>Erros: The remote and mysterious land to the east, is home to House Whitewind. It is know to be both a hostile and hidden place.</li>
+</p>
 </div>
 
 <div id="Hileon-location" class="location">
-<p>Hileon text content goes here</p>
+<p>Suren is the homeland of the Sera race. It is a perpetually cold and harsh land, full of ancient history and dark secrets. <br>
+    <li>Mist Isles: These fabled islands are under the lordship of House Hannibal, known for their treacherous people and labyrinthine waters.</li>
+    <br>
+    <li>Socoto: The northern most region, Controlled by House Valdeck is known for its vast forests and tough people.</li>
+    <br>
+    <li>Nos: The Eastern region, controlled by House Delavega, known for its mountainous terrain and fierce pride.</li>
+    <br>
+    <li>Nidora: Controlled by the wealthy House Steelborne, Nidora boarders the southern continent of Nevina. They are known not only for their strength and rich resources, but also their tolerance and welcoming nature.</li>
+    <br>
+    <li>Shinsis: The remote and mysterious land to the east, is home to House Whitewind. It is know to be both a hostile and hidden place.</li>
+</p>
 </div>
 
 <div id="Astereen-location" class="location">
@@ -141,7 +188,13 @@ allow="autoplay"></iframe>
 </div>
 
 <div id="Gurog-location" class="location">
-<p>Gurog text content goes here</p>
+<p>Gurog is the homeland of the Seraphim race and the rulers of all Hexus. It is a changing and varied land with constantly changing weather. <br>
+    <li>Glacia: Capital city of Gurog and home to the Seraphim Royal Family.</li>
+    <li>Norrag: A harsh coastal region and home to Sect Meraxus</li>
+    <li>Morco: The wealthiest region of the Gurog, controlled by Sect Seraph.</li>
+    <li>Helgan: The dark and mysterious land to the east, home to the Seraphim Death Worshippers of Sect Sinahara.</li>
+    <li>Torra: The Expansive grasslands and home to the nomadic tribes of Sect Shagar.</li>
+</p>
 </div>
 
 <footer class="text-center mt-5">
@@ -150,33 +203,45 @@ allow="autoplay"></iframe>
 </footer>
 
 <script>
+
 const buttons = document.querySelectorAll("button[data-target]");
 const locations = document.querySelectorAll(".location");
 const iframe = document.getElementById("mapFrame");
+
+const zoomClasses = [
+    "zoom-center",
+    "zoom-suren",
+    "zoom-nevina",
+    "zoom-hileon",
+    "zoom-astereen",
+    "zoom-gurog"
+];
+
+let activeTarget = null;
 
 buttons.forEach(btn => {
     btn.addEventListener("click", () => {
         const target = btn.dataset.target;
 
-        // hide all text
-        locations.forEach(loc => loc.style.display = "none");
+        // SECOND CLICK → reset everything
+        if (activeTarget === target) {
+            locations.forEach(loc => loc.style.display = "none");
+            iframe.classList.remove(...zoomClasses);
+            iframe.classList.add("zoom-center");
+            activeTarget = null;
+            return;
+        }
 
-        // show selected text
+        // FIRST CLICK → zoom to location
+        activeTarget = target;
+
+        locations.forEach(loc => loc.style.display = "none");
         document.getElementById(`${target}-location`).style.display = "block";
 
-        // reset zoom
-        iframe.classList.remove("zoom-center", "zoom-suren");
-
-        // apply correct zoom
-        if (target === "Suren") {
-            iframe.classList.add("zoom-suren");
-        } else {
-            iframe.classList.add("zoom-center");
-        }
+        iframe.classList.remove(...zoomClasses);
+        iframe.classList.add(`zoom-${target.toLowerCase()}`);
     });
 });
-
-
 </script>
 
 </body>

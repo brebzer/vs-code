@@ -1,81 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Legacys of Hexus</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
 <style>
-    
+body {
+    background-color: #2f3030;
+    color: whitesmoke;
+}
+
 h1 {
     text-align: center;
-    margin-top: 20px;
-    margin-bottom: 40px;
+    margin: 20px 0 40px;
     background-image: linear-gradient(to right, #ff7e5f, #feb47b);
     padding: 20px;
     border-radius: 10px;
-    color: whitesmoke;
-    
 }
 
-footer {
-    text-align: center;
-    margin-top: 50px;
-    color: whitesmoke;
-}
-
-div.container {
-    margin-top: 50px;
-    color: whitesmoke;
-    background-image: linear-gradient(to right, #ff7e5f, #feb47b);
-    border-radius: 10px;
-    
-}
-
-body {
-    background-color: #2f3030
-}
-
-iframe {position: center;margin-left: auto;margin-right: auto;display: block;
-border: 5px solid #ff7e5f;}
 table {
-    margin-left: auto;
-    margin-right: auto;
+    margin: auto;
     border: 5px solid #ff7e5f;
     border-radius: 10px;
     background-color: #444646;
-    color: whitesmoke;
     width: 200px;
     text-align: center;
 }
-th, td {
+
+th {
     padding: 15px;
 }
-div.parent {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 30px;           
-    margin-top: 50px;
-    margin-bottom: 50px;
+
+button {
+    width: 100%;
 }
 
+.parent {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 50px 0;
+}
+
+/* iframe zoom wrapper */
+.iframe-wrapper {
+    width: 800px;
+    height: 580px;
+    overflow: hidden;
+    border: 5px solid #ff7e5f;
+    
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    transform: scale(1);
+    transition: transform 0.6s ease, transform-origin 0.6s ease;
+}
+
+/* zoom states */
+.zoom-center {
+    transform: scale(1);
+    transform-origin: default;
+}
+
+.zoom-suren {
+    transform: scale(2);
+    transform-origin: top left;
+}
+.zoom-nevina {
+    transform: scale(2);
+    transform-origin: 0% 70%;
+}
+.zoom-hileon {
+    transform: scale(2);
+    transform-origin: 50% 60%;
+}
+.zoom-astereen {
+    transform: scale(2);
+    transform-origin: 40% 100%;
+}
+.zoom-gurog {
+    transform: scale(2);        
+    transform-origin: 100% 10%;
+}
+
+/* text panels */
 .location {
+    display: none;
     background-color: #444646;
-    color: whitesmoke;
     border: 5px solid #ff7e5f;
     border-radius: 10px;
     padding: 20px;
-    margin: 20px;
+    margin: 20px auto;
+    width: 60%;
 }
 </style>
-
 </head>
-<body>
-    <h1>The Legacys of Hexus</h1>
 
-    <div class="container text-center">
+<body>
+
+<h1>The Legacys of Hexus</h1>
+
+<div class="container text-center">
   <div class="row">
     <div class="col">
         Charaters
@@ -92,71 +123,127 @@ div.parent {
   </div>
 </div>
 
-<div class='parent'>
+<div class="parent">
+
 <table>
-  <tr>
-    <th><button type="button">Suren</button>
-  </tr>
-  <tr>
-    <th><button type="button">Nevina</button>
-  </tr>
-  <tr>
-    <th><button type="button">Hileon</button>
-  </tr>
-  <tr>
-    <th><button type="button">Astereen</button>
-  </tr>
-  <tr>
-    <th><button type="button">Gurog</button>
-  </tr>
-  
+<tr><th><button data-target="Suren">Suren</button></th></tr>
+<tr><th><button data-target="Nevina">Nevina</button></th></tr>
+<tr><th><button data-target="Hileon">Hileon</button></th></tr>
+<tr><th><button data-target="Astereen">Astereen</button></th></tr>
+<tr><th><button data-target="Gurog">Gurog</button></th></tr>
 </table>
 
-
-
-<iframe src="https://drive.google.com/file/d/1voMAHB-sqWyXPHkgcklPRcKrHAGGCW5o/preview" width="800" height="580" allow="autoplay"></iframe>
-<br>
+<div class="iframe-wrapper">
+<iframe id="mapFrame"
+src="https://drive.google.com/file/d/1voMAHB-sqWyXPHkgcklPRcKrHAGGCW5o/preview"
+allow="autoplay"></iframe>
 </div>
 
-<div class='Suren-location'></div>
-  <div class='location'> 
-    <p>Suren text content goes here</p>
-  </div>
 </div>
 
-<div class='Nevina-location'>
-<div class='location'> 
-  <p>Nevina text content goes here</p>
-</div>
-</div>
-
-<div class='Hileon-location'>
-<div class='location'> 
-  <p>Hileon text content goes here</p>
-</div>
-</div>
-
-<div class='astereen-location'>
-<div class='location'> 
-  <p>Astereen text content goes here</p>
-</div>
+<!-- Text sections -->
+<div id="Suren-location" class="location">
+<p>Suren is the homeland of the Sera race. It is a perpetually cold and harsh land, full of ancient history and dark secrets. <br>
+    <li>Mist Isles: These fabled islands are under the lordship of House Hannibal, known for their treacherous people and labyrinthine waters.</li>
+    <br>
+    <li>Socoto: The northern most region, Controlled by House Valdeck is known for its vast forests and tough people.</li>
+    <br>
+    <li>Nos: The Eastern region, controlled by House Delavega, known for its mountainous terrain and fierce pride.</li>
+    <br>
+    <li>Nidora: Controlled by the wealthy House Steelborne, Nidora boarders the southern continent of Nevina. They are known not only for their strength and rich resources, but also their tolerance and welcoming nature.</li>
+    <br>
+    <li>Shinsis: The remote and mysterious land to the east, is home to House Whitewind. It is know to be both a hostile and hidden place.</li>
+</p>
 </div>
 
-<div class='Gurog-location'>
-<div class='location'> 
-  <p>Gurog text content goes here</p>
-</div>
+<div id="Nevina-location" class="location">
+<p>Nevina is the homeland of the Human race. It is a temperate region characterized by its lush forests and fertile plains. <br>
+    <li>Abakon: Controlled by Clan Kraken, they are famed for their use of exotic plants to fight as berserkers. The region is known for its cold climate.</li>
+    <br>
+    <li>Makon: The northern most region, Controlled by House Valdeck is known for its vast forests and tough people.</li>
+    <br>
+    <li>Dune: The Eastern region, controlled by House Delavega, known for its mountainous terrain and fierce pride.</li>
+    <br>
+    <li>Evergreen Grove: Controlled by the wealthy House Steelborne, Nidora boarders the southern continent of Nevina. They are known not only for their strength and rich resources, but also their tolerance and welcoming nature.</li>
+    <br>
+    <li>Erros: The remote and mysterious land to the east, is home to House Whitewind. It is know to be both a hostile and hidden place.</li>
+</p>
 </div>
 
+<div id="Hileon-location" class="location">
+<p>Suren is the homeland of the Sera race. It is a perpetually cold and harsh land, full of ancient history and dark secrets. <br>
+    <li>Mist Isles: These fabled islands are under the lordship of House Hannibal, known for their treacherous people and labyrinthine waters.</li>
+    <br>
+    <li>Socoto: The northern most region, Controlled by House Valdeck is known for its vast forests and tough people.</li>
+    <br>
+    <li>Nos: The Eastern region, controlled by House Delavega, known for its mountainous terrain and fierce pride.</li>
+    <br>
+    <li>Nidora: Controlled by the wealthy House Steelborne, Nidora boarders the southern continent of Nevina. They are known not only for their strength and rich resources, but also their tolerance and welcoming nature.</li>
+    <br>
+    <li>Shinsis: The remote and mysterious land to the east, is home to House Whitewind. It is know to be both a hostile and hidden place.</li>
+</p>
+</div>
 
-<footer>
-  <p>Author: Bryan Nalty<br>
-  <a href="mailto:bryannalty@gmail.com">bryannalty@gmail.com</a></p>
+<div id="Astereen-location" class="location">
+<p>Astereen text content goes here</p>
+</div>
+
+<div id="Gurog-location" class="location">
+<p>Gurog is the homeland of the Seraphim race and the rulers of all Hexus. It is a changing and varied land with constantly changing weather. <br>
+    <li>Glacia: Capital city of Gurog and home to the Seraphim Royal Family.</li>
+    <li>Norrag: A harsh coastal region and home to Sect Meraxus</li>
+    <li>Morco: The wealthiest region of the Gurog, controlled by Sect Seraph.</li>
+    <li>Helgan: The dark and mysterious land to the east, home to the Seraphim Death Worshippers of Sect Sinahara.</li>
+    <li>Torra: The Expansive grasslands and home to the nomadic tribes of Sect Shagar.</li>
+</p>
+</div>
+
+<footer class="text-center mt-5">
+<p>Author: Bryan Nalty<br>
+<a href="mailto:bryannalty@gmail.com">bryannalty@gmail.com</a></p>
 </footer>
 
 <script>
 
-  
+const buttons = document.querySelectorAll("button[data-target]");
+const locations = document.querySelectorAll(".location");
+const iframe = document.getElementById("mapFrame");
+
+const zoomClasses = [
+    "zoom-center",
+    "zoom-suren",
+    "zoom-nevina",
+    "zoom-hileon",
+    "zoom-astereen",
+    "zoom-gurog"
+];
+
+let activeTarget = null;
+
+buttons.forEach(btn => {
+    btn.addEventListener("click", () => {
+        const target = btn.dataset.target;
+
+        // SECOND CLICK → reset everything
+        if (activeTarget === target) {
+            locations.forEach(loc => loc.style.display = "none");
+            iframe.classList.remove(...zoomClasses);
+            iframe.classList.add("zoom-center");
+            activeTarget = null;
+            return;
+        }
+
+        // FIRST CLICK → zoom to location
+        activeTarget = target;
+
+        locations.forEach(loc => loc.style.display = "none");
+        document.getElementById(`${target}-location`).style.display = "block";
+
+        iframe.classList.remove(...zoomClasses);
+        iframe.classList.add(`zoom-${target.toLowerCase()}`);
+    });
+});
 </script>
+
 </body>
 </html>
