@@ -151,16 +151,38 @@ body {
   
 }
 
+
+/* ERA DROPDOWN */
+.era-content {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.6s ease, opacity 0.4s ease;
+}
+
+/* Open state */
+.era.open .era-content {
+  max-height: 6000px; /* large enough for long timelines */
+  opacity: 1;
+}
+
+/* Clickable header */
+.era-header {
+  cursor: pointer;
+  user-select: none;
+}
+
   </style>
 </head>
-<div class="title">
+<div class="era">
+  <div class="title era-header">
 <h2>Dynasty of the Diamond kings</h2>
 <p>2001 PS 160 PS</p>
 
 <p>The time of unity in Gurog under the Regin of the Diamond Kings</p>
 
 </div>
-<div class="timeline">
+  <div class="timeline era-content">
   <div class="container left">
     <div class="content">
       <h2>-2000 AS </h2>
@@ -187,14 +209,15 @@ Founding </h2>
     </div>
     </div>
 
-  <div class="title">
+  <div class="era">
+  <div class="title era-header">
    <h2>The Sowing of Nevina</h2>
    <p>0 PS > 34 AS</p>
    <p>The era of Nevina's heros and the war that shaped it future</p>
     
 </div>
 
-<div class="timeline">
+  <div class="timeline era-content">
     <div class="container right">
     <div class="content">
       <h2> 0 AS</h2>
@@ -288,12 +311,13 @@ Founding </h2>
   </div>
   </div>
 
-  <div class="title">
+  <div class="era">
+  <div class="title era-header">
   <h2>The Sera invasion</h2>
    <p> 52 AS > 64 AS </p>
 </div>
 
-<div class="timeline">
+  <div class="timeline era-content">
   <div class="container left">
     <div class="content">
       <h2> 52 AS </h2>
@@ -332,14 +356,14 @@ Founding </h2>
     </div>
     </div>
 
-<div class="title">
-
+<div class="era">
+  <div class="title era-header">
     <h2>The Hileon Expansion</h2>
 <p>157 AS > 370 AS</p>
 </div>
 
 
-<div class="timeline">
+  <div class="timeline era-content">
   <div class="container left">
     <div class="content">
       <h2> 158 AS</h2>
@@ -362,14 +386,14 @@ Founding </h2>
     </div>
     </div>
     </div>
-
-    <div class="title">
+<div class="era">
+  <div class="title era-header">
     <h2>The Pre War Era</h2>
    <p> 500 AS > 900 AS </p>
 </div>
 
 
-   <div class="timeline">
+     <div class="timeline era-content">
   <div class="container right">
     <div class="content">
       <h2> 515 AS </h2>
@@ -394,12 +418,13 @@ Founding </h2>
     </div>
 
 
-    <div class="title">
+    <div class="era">
+  <div class="title era-header">
    <h2>The King's era</h2>
 <p> 900 As > 1100 As </p>
 </div>
 
-    <div class="timeline">
+     <div class="timeline era-content">
     <div class="container left">
       <div class="content">
         <h2>  958 AS </h2>
@@ -501,13 +526,14 @@ Founding </h2>
     </div>
 
 
-    <div class="title">
+    <div class="era">
+  <div class="title era-header">
       <h2>The Conquest War</h2>
 <p>  983 AS > 1013 AS </p>
     </div>  
 
 
-    <div class="timeline">
+      <div class="timeline era-content">
     <div class="container left">
       <div class="content">
         <h2>  983 AS </h2>
@@ -599,6 +625,13 @@ Founding </h2>
     </div>
 
     
-
+<script>
+  document.querySelectorAll(".era-header").forEach(header => {
+    header.addEventListener("click", () => {
+      const era = header.closest(".era");
+      era.classList.toggle("open");
+    });
+  });
+</script>
 </body>
 </html>
