@@ -8,8 +8,14 @@
     * {
     box-sizing: border-box;
   }
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #2f3030;
+  }
   header {
-    background-image: linear-gradient(to right, lightblue, blue);
+    background-image: linear-gradient(to right, #5f5e65, #2f3030);
     text-align: center;
     padding: 2px;
     font-size: 25px;
@@ -34,16 +40,29 @@
     height: 300px; 
   }
   footer {
-    background-color: lightblue;
+    background: linear-gradient(to right, #5f5e65, #2f3030);
     padding: 10px;
     text-align: center;
     color: white;
+    border-radius: 10px
   }
   section::after {
     content: "";
     display: table;
     clear: both;
   }
+ .menu {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 40px;
+  font-size: 20px;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  background-image: linear-gradient(to right, #5f5e65, #2f3030);
+}
+
 </style>
 </head>
 <body>
@@ -51,6 +70,14 @@
         <h2>The Legacys of Hexus</h2>
        
     </header>
+
+  <div class="menu">
+  <div>Characters</div>
+  <div>Locations</div>
+  <div>Races</div>
+  <div>Timeline</div>
+</div>
+
     <section>
       <nav>
         <ul>
@@ -63,13 +90,20 @@
       </nav>
       <article>
         <h1>Welcome to World of Hexus</h1>
-        <p>This is a home page.</p>
+        <p>The legacys of Hexus is an upcoming fantasy series set in a magical and immersive world. Explore the locations, characters, and races of this unique setting.</p>
+        <p>Discover the rich lore and intricate history that will lead to the beginning of our story.</p>
+        <p>Stay tuned for more updates on Book 1 "The Sea Runner's call"!</p>
       </article>
     </section>
-    <footer>
-      <p>Footer</p>
-    </footer>
+   <footer>
+  <p>Authors:  Nalty Brothers<br>
+  <a href="mailto:bryannalty@gmail.com">bryannalty@gmail.com</a></p>
+
+  <p>About Us</p>
+</footer>
 </body>
+
+
 
 </body>
 </html>
