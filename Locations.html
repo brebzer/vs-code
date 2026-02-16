@@ -155,6 +155,7 @@ allow="autoplay"></iframe>
 
 <!-- Text sections -->
 <div id="Suren-location" class="location">
+    <p>Current Weather: <span id="Suren-weather"></span></p>
 <p>Suren is the homeland of the Sera race. It is a perpetually cold and harsh land, full of ancient history and dark secrets. <br>
     <li>Mist Isles: These fabled islands are under the lordship of House Hannibal, known for their treacherous people and labyrinthine waters.</li>
     <br>
@@ -169,6 +170,7 @@ allow="autoplay"></iframe>
 </div>
 
 <div id="Nevina-location" class="location">
+    <p>Current Weather: <span id="Nevina-weather"></span></p>
 <p>Nevina is the homeland of the Human race. It is a temperate region characterized by its lush forests and fertile plains. <br>
     <li>Abakon: Controlled by Clan Kraken, they are famed for their use of exotic plants to fight as berserkers. The region is known for its cold climate.</li>
     <br>
@@ -183,6 +185,7 @@ allow="autoplay"></iframe>
 </div>
 
 <div id="Hileon-location" class="location">
+    <p>Current Weather: <span id="Hileon-weather"></span></p>
     <p>Hileon is a harsh and unforgiving land at the centre of Hexus. Its history is one of conflict and instability. Its people have known generations of war and are as varied as they are formidable.</p>
     <ul>
         <li>Rucken: Controlled by House Blackryne, Rucken is the largest city on the continent. They are known for their military prowess and their close relationship with the Human and Sera Races.</li>
@@ -193,6 +196,7 @@ allow="autoplay"></iframe>
 </div>
 
 <div id="Astereen-location" class="location">
+    <p>Current Weather: <span id="Astereen-weather"></span></p>
   <p>Astereen is otherwise known as the Green Abyss. It is a mysterious and dangerous land, filled with dense forests and monsterous creatures. Outsiders seldom last long on its land, and those who venture in are often never seen again.
     <br> The land itself is largely unexplored and holds many secrets, no man knows how large the continent truly is.
     <br> Be that as it may, its land holds an abundance of untapped resources.
@@ -200,6 +204,7 @@ allow="autoplay"></iframe>
 </div>
 
 <div id="Gurog-location" class="location">
+    <p>Current Weather: <span id="Gurog-weather"></span></p>
 <p>Gurog is the homeland of the Seraphim race and the rulers of all Hexus. It is a changing and varied land with constantly changing weather. <br>
     <li>Glacia: Capital city of Gurog and home to the Seraphim Royal Family.</li>
     <li>Norrag: A harsh coastal region and home to Sect Meraxus</li>
@@ -216,47 +221,8 @@ allow="autoplay"></iframe>
   <p>About Us</p>
 </footer>
 
-<script>
+<script src="js/Locations.js"></script>
 
-const buttons = document.querySelectorAll("button[data-target]");
-const locations = document.querySelectorAll(".location");
-const iframe = document.getElementById("mapFrame");
-
-const zoomClasses = [
-    "zoom-center",
-    "zoom-suren",
-    "zoom-nevina",
-    "zoom-hileon",
-    "zoom-astereen",
-    "zoom-gurog"
-];
-
-let activeTarget = null;
-
-buttons.forEach(btn => {
-    btn.addEventListener("click", () => {
-        const target = btn.dataset.target;
-
-        // SECOND CLICK → reset everything
-        if (activeTarget === target) {
-            locations.forEach(loc => loc.style.display = "none");
-            iframe.classList.remove(...zoomClasses);
-            iframe.classList.add("zoom-center");
-            activeTarget = null;
-            return;
-        }
-
-        // FIRST CLICK → zoom to location
-        activeTarget = target;
-
-        locations.forEach(loc => loc.style.display = "none");
-        document.getElementById(`${target}-location`).style.display = "block";
-
-        iframe.classList.remove(...zoomClasses);
-        iframe.classList.add(`zoom-${target.toLowerCase()}`);
-    });
-});
-</script>
 
 </body>
 </html>
