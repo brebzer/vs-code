@@ -1,0 +1,322 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Footer from "../layouts/Footer.astro";
+---
+
+<Layout title="Races">
+    <style> 
+body {
+    background-color: #2f3030;
+    color: whitesmoke;
+}
+
+h1 {
+    text-align: center;
+    margin: 20px 0 40px;
+    background-image: linear-gradient(to right, #5f5e65, #2f3030);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+table {
+    margin: auto;
+    border: 5px solid #5f5e65;
+    border-radius: 10px;
+    background-color: #444646;
+    width: 200px;
+    text-align: center;
+}
+
+th {
+    padding: 15px;
+}
+
+button {
+    width: 100%;
+}
+
+.parent {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 50px 0;
+}
+
+footer {
+    background: linear-gradient(to right, #5f5e65, #2f3030);
+    padding: 10px;
+    text-align: center;
+    color: white;
+    padding: 20px;
+    border-radius: 10px
+  }
+
+/* iframe zoom wrapper */
+.iframe-wrapper {
+    width: 800px;
+    height: 580px;
+    overflow: hidden;
+    border: 5px solid #5f5e65;
+    
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    transform: scale(1);
+    transition: transform 0.6s ease, transform-origin 0.6s ease;
+    margin-right: -100%;
+}
+
+/* zoom states */
+.zoom-center {
+    transform: scale(1);
+    transform-origin: default;
+}
+
+.zoom-suren {
+    transform: scale(2);
+    transform-origin: top left;
+}
+.zoom-nevina {
+    transform: scale(2);
+    transform-origin: 0% 70%;
+}
+.zoom-hileon {
+    transform: scale(2);
+    transform-origin: 50% 60%;
+}
+.zoom-astereen {
+    transform: scale(2);
+    transform-origin: 40% 100%;
+}
+.zoom-gurog {
+    transform: scale(2);        
+    transform-origin: 100% 10%;
+}
+
+/* text panels */
+.location {
+    display: none;
+    background-color: #444646;
+    border: 5px solid #ff7e5f;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px auto;
+    width: 60%;
+}
+
+.menu {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 40px;
+  font-size: 20px;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  background-image: linear-gradient(to right, #5f5e65, #2f3030);
+}
+
+ .menu {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      font-size: 20px;
+      margin: 20px;
+      padding: 20px;
+      border-radius: 10px;
+      background-image: linear-gradient(to right, #5f5e65, #2f3030);
+      color: white;
+      display: flex;
+    }
+    /* Accessible menu item styles */
+    .menu a {
+      color: white;
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      transition: background 0.3s, box-shadow 0.3s;      
+    }
+
+    .menu a:hover,
+    .menu a:focus {
+      background: rgba(255,255,255,0.06);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(255,126,95,0.12);
+    }
+
+    .menu a:focus-visible {
+      outline: 2px solid #ff7e5f;
+      outline-offset: 2px;
+    }
+
+
+
+    </style>
+
+    <div class="parent">
+
+<table>
+<tr><th><button data-target="Suren">Suren</button></th></tr>
+<tr><th><button data-target="Nevina">Nevina</button></th></tr>
+<tr><th><button data-target="Hileon">Hileon</button></th></tr>
+<tr><th><button data-target="Astereen">Astereen</button></th></tr>
+<tr><th><button data-target="Gurog">Gurog</button></th></tr>
+</table>
+
+<div class="iframe-wrapper">
+<iframe id="mapFrame"
+src="https://drive.google.com/file/d/1-oU17qJH76WplSn-PIw61t3RPpjsPMnd/preview"
+allow="autoplay"></iframe>
+</div>
+
+</div>
+
+<!-- Text sections -->
+<div id="Suren-location" class="location">
+    <p>Current Weather: <span id="Suren-weather"></span></p>
+<p>Suren is the homeland of the Sera race. It is a perpetually cold and harsh land, full of ancient history and dark secrets. <br>
+    <li>Mist Isles: These fabled islands are under the lordship of House Hannibal, known for their treacherous people and labyrinthine waters.</li>
+    <br>
+    <li>Socoto: The northern most region, Controlled by House Valdeck is known for its vast forests and tough people.</li>
+    <br>
+    <li>Nos: The Eastern region, controlled by House Delavega, known for its mountainous terrain and fierce pride.</li>
+    <br>
+    <li>Nidora: Controlled by the wealthy House Steelborne, Nidora boarders the southern continent of Nevina. They are known not only for their strength and rich resources, but also their tolerance and welcoming nature.</li>
+    <br>
+    <li>Shinsis: The remote and mysterious land to the east, is home to House Whitewind. It is know to be both a hostile and hidden place.</li>
+</p>
+</div>
+
+<div id="Nevina-location" class="location">
+    <p>Current Weather: <span id="Nevina-weather"></span></p>
+<p>Nevina is the homeland of the Human race. It is a temperate region characterized by its lush forests and fertile plains. <br>
+    <li>Abakon: Controlled by Clan Kraken, they are famed for their use of exotic plants to fight as berserkers. The region is known for its cold climate.</li>
+    <br>
+    <li>Makon: Is a land of decay and devastation. Now the barren home of Clan Pheonix, its blackened earth and dark skies are an eternal reminder of the Gods unnatural power.</li>
+    <br>
+    <li>Dune: The land of Clan Hydra, known for it's hearty people and closed off nature. They often conflict the other clans over matters or pride and territory.</li>
+    <br>
+    <li>Evergreen Grove: Controlled by Clan Griffin, Evergreen Grove is known for its lush vegetation and strong ties to nature. The clan is respected for their wisdom and their long tradition of griffin riders.</li>
+    <br>
+    <li>Erros: The southern region of Nevina, controlled by Clan Minotaur. They are known for their strength and resilience, they are known to have produced the most Human Elders throughout the centuries.</li>
+</p>
+</div>
+
+<div id="Hileon-location" class="location">
+    <p>Current Weather: <span id="Hileon-weather"></span></p>
+    <p>Hileon is a harsh and unforgiving land at the centre of Hexus. Its history is one of conflict and instability. Its people have known generations of war and are as varied as they are formidable.</p>
+    <ul>
+        <li>Rucken: Controlled by House Blackryne, Rucken is the largest city on the continent. They are known for their military prowess and their close relationship with the Human and Sera Races.</li>
+        <li>Charonia: Largely looked down upon by the rest of Hexus, Charonia is known as a haven for Pirates and mercenaries. It is controlled by the cunning Silis Family, who have a reputation for guile and cruelty in equal measure. Charonia is often known as the "Last Port" due to its location on the southern coast of Hileon, making it the port closest to the deadly and unexplored continent of Astereen.</li>
+        <li>New Diamor: Is the home of the Mongels faction of Hileon. They are twisted half-breeds known for their grotesque appearance and their brutal treatment of their foes and slaves.</li>
+        <li>The Grey Wastes: Is the largest territory in Hileon, controlled by the cannibalistic Knights of Bane. Their lands are barren and made up of conquered cites and towns, all controlled through fear. Their ancestral seat is known as the Heros Tower, an ancient fortress from a time before they turned to savagery.</li>
+    </ul>
+</div>
+
+<div id="Astereen-location" class="location">
+    <p>Current Weather: <span id="Astereen-weather"></span></p>
+  <p>Astereen is otherwise known as the Green Abyss. It is a mysterious and dangerous land, filled with dense forests and monsterous creatures. Outsiders seldom last long on its land, and those who venture in are often never seen again.
+    <br> The land itself is largely unexplored and holds many secrets, no man knows how large the continent truly is.
+    <br> Be that as it may, its land holds an abundance of untapped resources.
+    <br>For the first time in centuries, the Humans have begun to colonise the wild land and take the riches for themselves. Now the settlements of Port Fransis and Port Khann must face the wrath of the land and its inhabitants.</p>
+</div>
+
+<div id="Gurog-location" class="location">
+    <p>Current Weather: <span id="Gurog-weather"></span></p>
+<p>Gurog is the homeland of the Seraphim race and the rulers of all Hexus. It is a changing and varied land with constantly changing weather. <br>
+    <li>Glacia: Capital city of Gurog and home to the Seraphim Royal Family.</li>
+    <li>Norrag: A harsh coastal region and home to Sect Meraxus</li>
+    <li>Morco: The wealthiest region of the Gurog, controlled by Sect Seraph.</li>
+    <li>Helgan: The dark and mysterious land to the east, home to the Seraphim Death Worshippers of Sect Sinahara.</li>
+    <li>Torra: The Expansive grasslands and home to the nomadic tribes of Sect Shagar.</li>
+</p>
+</div>
+
+
+    <Footer />
+
+    <script> 
+const buttons = document.querySelectorAll("button[data-target]");
+const locations = document.querySelectorAll(".location");
+const iframe = document.getElementById("mapFrame");
+
+const zoomClasses = [
+    "zoom-center",
+    "zoom-suren",
+    "zoom-nevina",
+    "zoom-hileon",
+    "zoom-astereen",
+    "zoom-gurog"
+];
+
+let activeTarget = null;
+
+buttons.forEach(btn => {
+    btn.addEventListener("click", () => {
+        const target = btn.dataset.target;
+
+        // SECOND CLICK → reset everything
+        if (activeTarget === target) {
+            locations.forEach(loc => loc.style.display = "none");
+            iframe.classList.remove(...zoomClasses);
+            iframe.classList.add("zoom-center");
+            activeTarget = null;
+            return;
+        }
+
+        // FIRST CLICK → zoom to location
+        activeTarget = target;
+
+        locations.forEach(loc => loc.style.display = "none");
+        document.getElementById(`${target}-location`).style.display = "block";
+
+        iframe.classList.remove(...zoomClasses);
+        iframe.classList.add(`zoom-${target.toLowerCase()}`);
+    });
+});
+//  Weather Script
+document.addEventListener("DOMContentLoaded", () => {
+  loadWeather(82.8628, 135.0000, "Suren-weather");   // Suren
+  loadWeather(53.3498, -6.2603, "Nevina-weather");   // Nevina
+  loadWeather(23.4162, 25.6628, "Hileon-weather");      // Hileon
+  loadWeather(41.8967, 12.4822, "Gurog-weather");      // Gurog
+  loadWeather(3.4653, 62.2159, "Astereen-weather");      // Astereen
+});
+
+async function loadWeather(latitude, longitude, elementId) {
+  const weatherElement = document.getElementById(elementId);
+
+  if (!weatherElement) return;
+
+  try {
+    const response = await fetch(
+      `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true`
+    );
+
+    if (!response.ok) {
+      throw new Error(`HTTP error: ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    if (!data.current_weather) {
+      throw new Error("Weather data not available.");
+    }
+
+    const temperature = data.current_weather.temperature;
+
+    weatherElement.textContent = `${temperature}°C`;
+
+  } catch (error) {
+    weatherElement.textContent = "Unable to load.";
+    console.error(error);
+  }
+}
+
+    </script>
+</Layout>
