@@ -190,6 +190,27 @@ footer {
   }
 
   .right { left: 0; }
+
+  /* Mobile: reset pseudo-element positions so the timeline dot and arrows align */
+  .container::after {
+    left: 18px;
+    right: auto;
+  }
+
+  .left::after,
+  .right::after {
+    left: -16px;
+    right: auto;
+  }
+
+  .left::before,
+  .right::before {
+    left: 30px;
+    right: auto;
+    border-right-color: white;
+    border-left-color: transparent;
+    transform: none;
+  }
 }
     </style>
 
@@ -494,35 +515,7 @@ Founding </h2>
         <h2>   973 AS > 980 AS </h2>
         <h2> The war of Norag </h2>
         <p>Shogaroth invades the Meraxus lands and the two sides engage in a brutal war.</p>
-</div>
-    </div>
-    <div class="container left">
-      <div class="content">
-        <h2>   973 AS </h2>
-        <h2> Sylvia Valdeck is born</h2>
-        <p>In Rhiora city a poor and dying woman gives birth to a daughter</p>
       </div>
-    </div>
-    <div class="container right">
-      <div class="content">
-        <h2>   973 AS > 980 AS </h2>
-        <h2> The war of Norag </h2>
-        <p>Shogaroth invades the Meraxus lands and the two sides engage in a brutal war.</p>
-</div>
-    </div>
-    <div class="container left">
-      <div class="content">
-        <h2>   973 AS </h2>
-        <h2> Sylvia Valdeck is born</h2>
-        <p>In Rhiora city a poor and dying woman gives birth to a daughter</p>
-      </div>
-    </div>
-    <div class="container right">
-      <div class="content">
-        <h2>   973 AS > 980 AS </h2>
-        <h2> The war of Norag </h2>
-        <p>Shogaroth invades the Meraxus lands and the two sides engage in a brutal war.</p>
-</div>
     </div>
     <div class="container left">
       <div class="content">
@@ -654,24 +647,5 @@ Founding </h2>
     </div>
     </div>
 
-    <script>
-
-    document.querySelectorAll(".era-header").forEach(header => {
-    header.addEventListener("click", () => {
-      const era = header.closest(".era");
-      const isOpen = era.classList.contains("open");
-
-      era.classList.toggle("open");
-
-      if (!isOpen) {
-        setTimeout(() => {
-          era.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-          });
-        }, 200);
-      }
-    });
-  });
-    </script>
+    <script type="module" src="/src/js/timeline.js"></script>
 </Layout>

@@ -1,8 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Footer from "../layouts/Footer.astro";
+import HumansImg from '../assets/images/Humans.png';
+import SeraphimImg from '../assets/images/Seraphim.png';
+import SeraImg from '../assets/images/sera.png';
+import BronixImg from '../assets/images/Bronix.png';
 ---
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
 <Layout title="Races">
     <style>
  h1 {
@@ -119,7 +123,7 @@ import Footer from "../layouts/Footer.astro";
   <div class="carousel-inner">
 
     <div class="carousel-item active">
-      <img src="src/assets/images/Humans.png" class="d-block w-100" alt="Humans">
+      <img src={HumansImg.src} class="d-block w-100" alt="Humans">
       <div class="carousel-textbox">
         <h5>Humans</h5>
         <p>Of Nevina</p>
@@ -127,7 +131,7 @@ import Footer from "../layouts/Footer.astro";
     </div>
 
     <div class="carousel-item">
-      <img src="src/assets/images/Seraphim.png" class="d-block w-100" alt="Seraphim">
+      <img src={SeraphimImg.src} class="d-block w-100" alt="Seraphim">
       <div class="carousel-textbox">
         <h5>Seraphim</h5>
         <p>Of Gurog</p>
@@ -135,7 +139,7 @@ import Footer from "../layouts/Footer.astro";
     </div>
 
     <div class="carousel-item">
-      <img src="src/assets/images/sera.png" class="d-block w-100" alt="Sera">
+      <img src={SeraImg.src} class="d-block w-100" alt="Sera">
       <div class="carousel-textbox">
         <h5>Sera</h5>
         <p>Of Suren</p>
@@ -143,7 +147,7 @@ import Footer from "../layouts/Footer.astro";
     </div>
 
     <div class="carousel-item">
-      <img src="src/assets/images/Bronix.png" class="d-block w-100" alt="Bronix">
+      <img src={BronixImg.src} class="d-block w-100" alt="Bronix">
       <div class="carousel-textbox">
         <h5>Bronix</h5>
         <p>Of Astereen</p>

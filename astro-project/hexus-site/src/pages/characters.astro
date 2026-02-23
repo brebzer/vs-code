@@ -1,6 +1,18 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Footer from "../layouts/Footer.astro";
+import Bill_anron from '../assets/images/Bill_anron.png';
+import Borlock from '../assets/images/Borlock.jpeg';
+import Shogaroth from '../assets/images/Shogaroth.jpeg';
+import SylviaValdeck from '../assets/images/Sylvia_Valdeck.png';
+import Remok from '../assets/images/Remok.jpeg';
+import Gremnal from '../assets/images/gremnal.jpg';
+import MataoAnron from '../assets/images/Matao_anron.png';
+import Arkera from '../assets/images/Arkera.png';
+import KelinSteelborne from '../assets/images/Kelin_steelborne.png';
+import KorumSteelborne from '../assets/images/Korum_Steelborne.png';
+import Alexia from '../assets/images/Alexia.png';
+import Farah from '../assets/images/Farah.jpeg';
 ---
 
 <Layout title="Characters">
@@ -87,76 +99,74 @@ h2, p {
   <h1>Characters</h1>
 
 <p>Book 1 Main Characters</p>
-<div class="grid">  
+  <div class="grid">  
 
 
   <div class="container">
-    <img src="src/assets/images/Bill_anron.png" class="image">
+  <img src={Bill_anron.src} class="image" alt="Bill Anron">
     <div class="overlay"><div class="text">Bill Anron</div></div>
   </div>
 
-  
 
   <div class="container">
-    <img src="src/assets/images/Borlock.jpeg" class="image">
+  <img src={Borlock.src} class="image" alt="Borlock Anron">
     <div class="overlay"><div class="text">Borlock Anron</div></div>
   </div>
 
-
-<p>Book 1 Supporting Characters</p>
-</div>
-<div class="grid">
+  </div>
+  <p>Book 1 Supporting Characters</p>
+  <div class="grid">
 
 
   <div class="container">
-    <img src="src/assets/images/Shogaroth.jpeg" class="image">
+    <img src={Shogaroth.src} class="image" alt="King Shogaroth">
     <div class="overlay"><div class="text">King Shogaroth</div></div>
   </div>
 
   <div class="container">
-    <img src="src/assets/images/Sylvia_Valdeck.png" class="image">
+    <img src={SylviaValdeck.src} class="image" alt="Sylvia Valdeck">
     <div class="overlay"><div class="text">Sylvia Valdeck</div></div>
   </div>
 
   <div class="container">
-    <img src="src/assets/images/Remok.jpeg" class="image">
+    <img src={Remok.src} class="image" alt="Remok">
     <div class="overlay"><div class="text">Remok</div></div>
   </div>
 
   <div class="container">
-    <img src="src/assets/images/gremnal.jpg" class="image">
+    <img src={Gremnal.src} class="image" alt="Gremnal">
     <div class="overlay"><div class="text">Gremnal</div></div>
   </div>
 
   <div class="container">
-    <img src="src/assets/images/Matao_anron.png" class="image">
+    <img src={MataoAnron.src} class="image" alt="Matao Anron">
     <div class="overlay"><div class="text">Matao Anron</div></div>
   </div>
 
   <div class="container">
-    <img src="src/assets/images/Arkera.png" class="image">
+    <img src={Arkera.src} class="image" alt="Vector Arkera">
     <div class="overlay"><div class="text">Vector Arkera</div></div>
   </div>
 
 
   <div class="container">
-    <img src="src/assets/images/Kelin_steelborne.png" class="image">
+    <img src={KelinSteelborne.src} class="image" alt="Kelin Steelborne">
     <div class="overlay"><div class="text">Kelin Steelborne</div></div>
   </div>
 
   <div class="container">
-    <img src="src/assets/images/Korum_Steelborne.png" class="image">
+    <img src={KorumSteelborne.src} class="image" alt="Korum Steelborne">
     <div class="overlay"><div class="text">Korum Steelborne</div></div>
   </div>
 
 <div class="container">
-    <img src="src/assets/images/Alexia.png" class="image">
+    <img src={Alexia.src} class="image" alt="Alexia Valdeck">
     <div class="overlay"><div class="text">Alexia Valdeck</div></div>
   </div>
 
 
   <div class="container">
-    <img src="src/assets/images/Farah.jpeg" class="image">
+    <img src={Farah.src} class="image" alt="Farrah">
     <div class="overlay"><div class="text">Farrah</div></div>
   </div>
 
@@ -164,9 +174,9 @@ h2, p {
 
 <footer>
   <p>Authors:  Nalty Brothers<br>
-  <a href="mailto:bryannalty@gmail.com">bryannalty@gmail.com</a></p>
+  <a href="mailto:contact@hexus.com">contact@hexus.com</a></p>
 
-  <p><a href="aboutus.html">About Us</a></p>
+  <p><a href="/aboutus">About Us</a></p>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
@@ -174,5 +184,4 @@ h2, p {
 
 </script>
 
-</body>
 </Layout>
