@@ -19,36 +19,14 @@ import Footer from "../layouts/Footer.astro";
     header {
       background-image: linear-gradient(to right, #5f5e65, #2f3030);
       text-align: center;
-      padding: 2px;
+      padding: 10px;
       font-size: 25px;
       color: white;
     }
 
-    nav {
-      float: left;
-      width: 30%;
-      height: 300px;
-      background: #fff;
-      padding: 20px;
-    }
-
-    nav ul {
-      list-style-type: none;
-      padding: 0;
-    }
-
-    article {
-      float: left;
-      padding: 20px;
-      width: 70%;
-      background-color: #f1f1f1;
-      height: 300px;
-    }
-
-    section::after {
-      content: "";
-      display: table;
-      clear: both;
+    header a {
+      color: white;
+      text-decoration: none;
     }
 
     .menu {
@@ -67,35 +45,68 @@ import Footer from "../layouts/Footer.astro";
       text-decoration: none;
     }
 
-    header a {
-      color: white;
-      text-decoration: none;
+    /* ✅ Modern section layout */
+    section {
+      display: flex;
+      margin: 0 20px 40px;
+    }
+
+    nav {
+      width: 30%;
+      background: #2c2a2a;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ✅ Makes image fully fit */
+    nav img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    article {
+      width: 70%;
+      padding: 20px;
+      background-color: #c6c6c7;
+      color: #2f3030;
+    }
+
+    footer {
+      background: linear-gradient(to right, #5f5e65, #2f3030);
+      padding: 10px;
+      text-align: center;
+      color: rgb(244, 234, 234);
+      border-radius: 10px;
     }
   </style>
 
-  
   <section>
     <nav>
-      <ul>
-        <li><a href="/">Home</a></li>
-  <!--<li><a href="/learn">Learn HTML</a></li>-->
-  <li><a href="/aboutus">About Us</a></li>
-        <li><a href="/locations">Locations</a></li>
-        <li><a href="/characters">Characters</a></li>
-      </ul>
+      <img src="/src/assets/images/cover_placeholder.png" alt="Book Cover" />
     </nav>
 
     <article>
       <h1>Welcome to World of Hexus</h1>
+
       <p>
-  The legacies of Hexus is an upcoming fantasy series set in a magical and
-        immersive world. Explore the locations, characters, and races of this
-        unique setting.
+        The legacys of Hexus is an upcoming fantasy series set in a magical and immersive world.
+        Explore the locations, characters, and races of this unique setting.
       </p>
+
       <p>
-        Discover the rich lore and intricate history that will lead to the
-        beginning of our story.
+        Follow the journey of "The Sea Runner" William Anron as he is drawn into a conflict
+        that will change the fate of Hexus forever.
+        All the while his son Borlock is caught between two worlds, and must find his own path.
       </p>
+
+      <p>
+        Discover the rich lore and intricate history that will lead to the beginning of our story.
+      </p>
+
       <p>
         Stay tuned for more updates on Book 1 "The Sea Runner's Call"!
       </p>
