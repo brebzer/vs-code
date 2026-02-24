@@ -2,8 +2,8 @@
 import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout title="Timeline">
-    <style is:global>
+<style is:global>
+
 /* RESET */
 * {
   box-sizing: border-box;
@@ -31,7 +31,7 @@ body {
   top: 0;
   bottom: 0;
   left: 50%;
-  margin-left: -3px;
+  transform: translateX(-50%); /* FIXED CENTRE LINE */
 }
 
 .container {
@@ -76,10 +76,12 @@ body {
   border-right-color: white;
 }
 
+/* CONTENT */
 .content {
   padding: 20px 30px;
   background-color: white;
   border-radius: 6px;
+  color: black; /* FORCED BLACK TEXT */
 }
 
 /* ERA HEADERS */
@@ -182,7 +184,10 @@ footer {
 
 /* MOBILE */
 @media screen and (max-width: 600px) {
-  .timeline::after { left: 31px; }
+  .timeline::after {
+    left: 31px;
+    transform: none;
+  }
 
   .container {
     width: 100%;
@@ -191,7 +196,6 @@ footer {
 
   .right { left: 0; }
 
-  /* Mobile: reset pseudo-element positions so the timeline dot and arrows align */
   .container::after {
     left: 18px;
     right: auto;
@@ -212,7 +216,60 @@ footer {
     transform: none;
   }
 }
-    </style>
+
+
+
+</style>
+
+<h1>The Legacies of Hexus</h1>
+
+    <nav class="menu" role="navigation" aria-label="Main navigation">
+      <a href="/characters">Characters</a>
+      <a href="/locations">Locations</a>
+      <a href="/races">Races</a>
+      <a href="/timeline">Timeline</a>
+      <style>
+.menu {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  font-size: 20px;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  background-image: linear-gradient(to right, #5f5e65, #2f3030);
+}
+
+/* Accessible menu item styles */
+.menu a {
+  color: white;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.menu a:hover,
+.menu a:focus {
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 0 3px rgba(255, 126, 95, 0.15);
+}
+
+.menu a:focus-visible {
+  outline: 2px solid #ff7e5f;
+  outline-offset: 2px;
+}
+
+@media (max-width: 768px) {
+  .menu {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+}
+      </style>
+    </nav>
+
 
    <h3>Timeline of major events in the history of Hexus</h3>
 
@@ -648,4 +705,3 @@ Founding </h2>
     </div>
 
     <script type="module" src="/public/js/timeline.js"></script>
-</Layout>
