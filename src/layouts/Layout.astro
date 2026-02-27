@@ -30,7 +30,7 @@ const { title } = Astro.props;
 
     <nav class="menu" role="navigation" aria-label="Main navigation">
       <a href="/characters">Characters</a>
-      <a href="/locations">Locations</a>
+      <a href={Astro.resolve('/locations')}>Locations</a>
       <a href="/races">Races</a>
       <a href="/timeline">Timeline</a>
     </nav>
