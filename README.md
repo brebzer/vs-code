@@ -3,13 +3,26 @@
 ## Front End Web Development - Project Submission
 
 
+### Github-pages
+[`https://brebzer.github.io/vs-code/`](https://brebzer.github.io/vs-code/)
+
+
+### Github-repo
+[https://github.com/brebzer/vs-code](https://github.com/brebzer/vs-code)
+
+### Video recording
+
+
+
 ### Site Description
 
-This site is designed to showcase the world building,  characters and  world of a novel series I am currently writing. The images show are AI generated in oorder give a general idea of how these characters look. 
+This site is designed to showcase the world building,  characters and  world of a novel series I am currently writing. The images shown are AI generated in order give a general idea of how these characters look. 
 
 In practise, this site will consist 6 pages. The home/index page and about us pages are simple layouts. The four pages from the headers Nav menu will each showcase a different feature.
 
 I will outline these here:
+
+___
 
 ### Characters 
 >This page will display a flexible gallery of promient characters, when hovered over the image will fade and display the name of the character.
@@ -54,6 +67,8 @@ this is done through the use of the below CSS and Bootstrap:
 
 The end result should look similar to this outline:
 ![sitemap](https://raw.githubusercontent.com/brebzer/vs-code/refs/heads/main/sitemaps/characters-wireframe.png)
+
+___
 
 ### Locations
 Locations is designed around an embedded map image i designed that is stored in my own Google Drive. I made this image public and then added a set of five buttons with the names of different regions in the map and a section of text for each location. 
@@ -146,6 +161,8 @@ async function loadWeather(latitude, longitude, elementId) {
 The end result should look similar to this outline:
 ![sitemap](https://raw.githubusercontent.com/brebzer/vs-code/refs/heads/main/sitemaps/Locations-wireframe.png)
 
+___
+
 ### Races
 
 This page is designed to be a slide show of five images showing with a little title for each over the image. When the icons to the left ands right are clicked they will cycled through the images.
@@ -155,7 +172,7 @@ This was mostly done using the Bootstrap carousel function. https://getbootstrap
 The end result should look similar to this outline:
 ![sitemap](https://raw.githubusercontent.com/brebzer/vs-code/refs/heads/main/sitemaps/Races-wireframe.png)
 
-
+___
 
 ###  Timeline
 
@@ -164,45 +181,46 @@ This works by having all the Timelines hidden until the corresponfing era box is
 
 >This was a particularly tough page to work on when it came to converting to Astro, the Layout.asto file had conflicting css that changed how the timeline looked. In order to get around this, i added the header to the timeline.astro file wihtout the layout.astro being linked and added the css directly to that element
 
->for this page the js is linked from a standalone js file:
-> "/public/js/timeline.js"
+>this is the jas for this page:  
+
+```js
+ <script>
+document.querySelectorAll(".era-header").forEach(header => {
+    header.addEventListener("click", () => {
+      const era = header.closest(".era");
+      const isOpen = era.classList.contains("open");
+
+      era.classList.toggle("open");
+
+      if (!isOpen) {
+        setTimeout(() => {
+          era.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
+        }, 200);
+      }
+    });
+  });
+</script>
+```
 
 The end result should look similar to this outline:
 ![sitemap](https://raw.githubusercontent.com/brebzer/vs-code/refs/heads/main/sitemaps/timeline-wireframe.png)
 
-
-### Github-pages
-[`https://<your-github-username>.github.io/<your-github-site>/`](https://<your-github-username>.github.io/<your-github-site>/)
+___
 
 
-### Github-repo
-[https://github.com/brebzer/vs-code](https://github.com/brebzer/vs-code)
 
-This is the repo where the majority of development was done before uploading the completed version to the new repo.
+
+
+
+
+### Deply Astro site to Github Pages
+[https://docs.astro.build/en/guides/deploy/github/](https://docs.astro.build/en/guides/deploy/github/)
 
 
 
 This is a regular paragraph with _italicised_ and **bold** text.
 Here's a `coding term` in backticks.
 
-This is a new paragraph with a coding block (_threee backticks_ and language name touching)
-
-```html
-
-<meta name="description" content="Some intro idea short">
-
-<link rel="canonical" href="https://www.example.com/index.html">
-
-```
-
-If you want a link to 
-[MDN for `<meta name="description"`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/meta#setting_a_meta_description) - just `[visible text](https://web-address.com)`.
-
-If you want an image, just `![caption text](URL)` like so:
-![A nice image from unsplash](https://media.istockphoto.com/id/1299887977/photo/happy-people-in-nature-a-woman-feeling-and-touching-the-ocean-water-during-sunset.jpg?s=612x612&w=0&k=20&c=2VUqcuuiviuZyr9nAJaqMrplADdiDxoekuWuhAvJIyU=)
-> Tip: This shows as a highlighted noted
-
-
-___
-For more see
-[github markdown cheatsheet](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
