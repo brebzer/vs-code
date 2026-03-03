@@ -221,6 +221,4 @@ ___
 
 
 
-This is a regular paragraph with _italicised_ and **bold** text.
-Here's a `coding term` in backticks.
 
