@@ -1,83 +1,109 @@
-# Bryan nalty 
+# Bryan nalty
+
 
 ## Front End Web Development - Project Submission
+
+
 
 
 ### Github-pages
 [`https://brebzer.github.io/vs-code/`](https://brebzer.github.io/vs-code/)
 
 
+
+
 ### Github-repo
 [https://github.com/brebzer/vs-code](https://github.com/brebzer/vs-code)
 
+
 ### Video recording
+[https://www.loom.com/share/2287388a42954dadbdd989320947d789](https://www.loom.com/share/2287388a42954dadbdd989320947d789)
+
 
 
 
 ### Site Description
 
-This site is designed to showcase the world building,  characters and  world of a novel series I am currently writing. The images shown are AI generated in order give a general idea of how these characters look. 
+
+This site is designed to showcase the world building,  characters and  world of a novel series I am currently writing. The images shown are AI generated in order give a general idea of how these characters look.
+
 
 In practise, this site will consist 6 pages. The home/index page and about us pages are simple layouts. The four pages from the headers Nav menu will each showcase a different feature.
 
+
 I will outline these here:
+
 
 ___
 
-### Characters 
->This page will display a flexible gallery of promient characters, when hovered over the image will fade and display the name of the character.
+
+### Characters
+>This page will display a flexible gallery of prominent characters, when hovering over the image will fade and display the name of the character.
 this is done through the use of the below CSS and Bootstrap:
 
-```css 
+
+```css
+
 
 .container {
-  position: relative;
-  width: 250px;
-  border-radius: 10px;
-  overflow: hidden;
+ position: relative;
+ width: 250px;
+ border-radius: 10px;
+ overflow: hidden;
 }
+
 
 .image {
-  width: 100%;
-  height: auto;
-  display: block;
+ width: 100%;
+ height: auto;
+ display: block;
 }
+
 
 .overlay {
-  position: absolute;
-  inset: 0;
-  background-color: rgba(47, 48, 48, 0.9);
-  opacity: 0;
-  transition: 0.4s ease;
+ position: absolute;
+ inset: 0;
+ background-color: rgba(47, 48, 48, 0.9);
+ opacity: 0;
+ transition: 0.4s ease;
 }
+
 
 .container:hover .overlay {
-  opacity: 1;
+ opacity: 1;
 }
 
+
 .text {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
+ position: absolute;
+ inset: 0;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-size: 20px;
 }
 ```
+
 
 The end result should look similar to this outline:
 ![sitemap](https://raw.githubusercontent.com/brebzer/vs-code/refs/heads/main/sitemaps/characters-wireframe.png)
 
+
 ___
 
+
 ### Locations
-Locations is designed around an embedded map image i designed that is stored in my own Google Drive. I made this image public and then added a set of five buttons with the names of different regions in the map and a section of text for each location. 
+Locations is designed around an embedded map image i designed that is stored in my own Google Drive. I made this image public and then added a set of five buttons with the names of different regions in the map and a section of text for each location.
+
 
 This description also includes a dynamic temperature reading that updates and changews based on various real life locations, this was done through the use of JS to pull live weather data from this api: https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true
 
-I then used javascript to zoom into a specific location  on the map and display the corresponding text when a button is click, when its clicked again it will reset to its default position and the test will disappear.
+
+I then used javascript to zoom into a specific location  on the map and display the corresponding text when a button is clicked, when it is clicked again it will reset to its default position and the test will disappear.
+
 
 This is a copy of the JS:
+
 
 ```js
 const buttons = document.querySelectorAll("button[data-target]");
@@ -85,139 +111,234 @@ const locations = document.querySelectorAll(".location");
 const iframe = document.getElementById("mapFrame");
 
 
+
+
 const zoomClasses = [
-    "zoom-center",
-    "zoom-suren",
-    "zoom-nevina",
-    "zoom-hileon",
-    "zoom-astereen",
-    "zoom-gurog"
+   "zoom-center",
+   "zoom-suren",
+   "zoom-nevina",
+   "zoom-hileon",
+   "zoom-astereen",
+   "zoom-gurog"
 ];
+
 
 let activeTarget = null;
 
+
 buttons.forEach(btn => {
-    btn.addEventListener("click", () => {
-        const target = btn.dataset.target;
+   btn.addEventListener("click", () => {
+       const target = btn.dataset.target;
 
-        // SECOND CLICK → reset everything
-        if (activeTarget === target) {
-            locations.forEach(loc => loc.style.display = "none");
-            iframe.classList.remove(...zoomClasses);
-            iframe.classList.add("zoom-center");
-            activeTarget = null;
-            return;
-        }
 
-        // FIRST CLICK → zoom to location
-        activeTarget = target;
+       // SECOND CLICK → reset everything
+       if (activeTarget === target) {
+           locations.forEach(loc => loc.style.display = "none");
+           iframe.classList.remove(...zoomClasses);
+           iframe.classList.add("zoom-center");
+           activeTarget = null;
+           return;
+       }
 
-        locations.forEach(loc => loc.style.display = "none");
-        document.getElementById(`${target}-location`).style.display = "block";
 
-        iframe.classList.remove(...zoomClasses);
-        iframe.classList.add(`zoom-${target.toLowerCase()}`);
-    });
+       // FIRST CLICK → zoom to location
+       activeTarget = target;
+
+
+       locations.forEach(loc => loc.style.display = "none");
+       document.getElementById(`${target}-location`).style.display = "block";
+
+
+       iframe.classList.remove(...zoomClasses);
+       iframe.classList.add(`zoom-${target.toLowerCase()}`);
+   });
 });
 //  Weather Script
 document.addEventListener("DOMContentLoaded", () => {
-  loadWeather(82.8628, 135.0000, "Suren-weather");   // Suren
-  loadWeather(53.3498, -6.2603, "Nevina-weather");   // Nevina
-  loadWeather(23.4162, 25.6628, "Hileon-weather");      // Hileon
-  loadWeather(41.8967, 12.4822, "Gurog-weather");      // Gurog
-  loadWeather(3.4653, 62.2159, "Astereen-weather");      // Astereen
+ loadWeather(82.8628, 135.0000, "Suren-weather");   // Suren
+ loadWeather(53.3498, -6.2603, "Nevina-weather");   // Nevina
+ loadWeather(23.4162, 25.6628, "Hileon-weather");      // Hileon
+ loadWeather(41.8967, 12.4822, "Gurog-weather");      // Gurog
+ loadWeather(3.4653, 62.2159, "Astereen-weather");      // Astereen
 });
 
+
 async function loadWeather(latitude, longitude, elementId) {
-  const weatherElement = document.getElementById(elementId);
+ const weatherElement = document.getElementById(elementId);
 
-  if (!weatherElement) return;
 
-  try {
-    const response = await fetch(
-      `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true`
-    );
+ if (!weatherElement) return;
 
-    if (!response.ok) {
-      throw new Error(`HTTP error: ${response.status}`);
-    }
 
-    const data = await response.json();
+ try {
+   const response = await fetch(
+     `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true`
+   );
 
-    if (!data.current_weather) {
-      throw new Error("Weather data not available.");
-    }
 
-    const temperature = data.current_weather.temperature;
+   if (!response.ok) {
+     throw new Error(`HTTP error: ${response.status}`);
+   }
 
-    weatherElement.textContent = `${temperature}°C`;
 
-  } catch (error) {
-    weatherElement.textContent = "Unable to load.";
-    console.error(error);
-  }
+   const data = await response.json();
+
+
+   if (!data.current_weather) {
+     throw new Error("Weather data not available.");
+   }
+
+
+   const temperature = data.current_weather.temperature;
+
+
+   weatherElement.textContent = `${temperature}°C`;
+
+
+ } catch (error) {
+   weatherElement.textContent = "Unable to load.";
+   console.error(error);
+ }
 }
 ```
 The end result should look similar to this outline:
 ![sitemap](https://raw.githubusercontent.com/brebzer/vs-code/refs/heads/main/sitemaps/Locations-wireframe.png)
 
+
 ___
+
 
 ### Races
 
+
 This page is designed to be a slide show of five images showing with a little title for each over the image. When the icons to the left ands right are clicked they will cycled through the images.
 
+
 This was mostly done using the Bootstrap carousel function. https://getbootstrap.com/docs/4.0/components/carousel/
+
 
 The end result should look similar to this outline:
 ![sitemap](https://raw.githubusercontent.com/brebzer/vs-code/refs/heads/main/sitemaps/Races-wireframe.png)
 
+
 ___
+
 
 ###  Timeline
 
+
 >This page is designed to work as a group of drop down options, each is a list of events through the history of my books series in a timeline, and are split up into "Eras"
-This works by having all the Timelines hidden until the corresponfing era box is clicked. ahsn when clicked a second time it again hides the timeline
+This works by having all the Timelines hidden until the corresponding era box is clicked. and when clicked a second time it again hides the timeline
 
->This was a particularly tough page to work on when it came to converting to Astro, the Layout.asto file had conflicting css that changed how the timeline looked. In order to get around this, i added the header to the timeline.astro file wihtout the layout.astro being linked and added the css directly to that element
 
->this is the jas for this page:  
+>This was a particularly tough page to work on when it came to converting to Astro, the Layout.asto file had conflicting css that changed how the timeline looked. In order to get around this, i added the header to the timeline.astro file without the layout.astro being linked and added the css directly to that element
+
+
+>this is the jas for this page: 
+
 
 ```js
- <script>
+<script>
 document.querySelectorAll(".era-header").forEach(header => {
-    header.addEventListener("click", () => {
-      const era = header.closest(".era");
-      const isOpen = era.classList.contains("open");
+   header.addEventListener("click", () => {
+     const era = header.closest(".era");
+     const isOpen = era.classList.contains("open");
 
-      era.classList.toggle("open");
 
-      if (!isOpen) {
-        setTimeout(() => {
-          era.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-          });
-        }, 200);
-      }
-    });
-  });
+     era.classList.toggle("open");
+
+
+     if (!isOpen) {
+       setTimeout(() => {
+         era.scrollIntoView({
+           behavior: "smooth",
+           block: "start"
+         });
+       }, 200);
+     }
+   });
+ });
 </script>
 ```
+
 
 The end result should look similar to this outline:
 ![sitemap](https://raw.githubusercontent.com/brebzer/vs-code/refs/heads/main/sitemaps/timeline-wireframe.png)
 
+
 ___
 
 
 
 
+# transferring site to a new repo
+Currently the site is hard coded to use the Base /vs-code in:
+astro.config.mjs
 
 
+currently this is the contents of the file
+```
+// @ts-check
+import { defineConfig } from 'astro/config';
 
-### Deply Astro site to Github Pages
+
+// https://astro.build/config
+export default defineConfig({
+ site: 'https://brebzer.github.io',
+ base: '/vs-code',
+});
+```
+this "base:" can be changed to to use the new repo
+
+
+This is also present in the href of the pages and layouts that will need to be updated in order to work correctly.
+
+
+For example in Footer.astro, there is this href:
+
+
+```<a href="/vs-code/aboutus" class="text-sm hover:underline">About Us</a>```
+
+
+This is also the case for the Layout.astro
+```
+    <h1>
+ <a href="/vs-code/" class="title-link">The Legacies of Hexus</a>
+</h1>
+
+
+   <nav class="menu" role="navigation" aria-label="Main navigation">
+     <a href="/vs-code/characters">Characters</a>
+     <a href="/vs-code/locations">Locations</a>
+     <a href="/vs-code/races">Races</a>
+     <a href="/vs-code/timeline">Timeline</a>
+   </nav>
+```
+
+
+the timeline.asto page also has its own header hrefs that will need to be updated:
+```
+ <h1>
+ <a href="/vs-code/" class="title-link">The Legacies of Hexus</a>
+</h1>
+
+
+   <nav class="menu" role="navigation" aria-label="Main navigation">
+     <a href="/vs-code/characters">Characters</a>
+     <a href="/vs-code/locations">Locations</a>
+     <a href="/vs-code/races">Races</a>
+     <a href="/vs-code/timeline">Timeline</a>
+   </nav>
+```
+### Deploy Astro site to Github Pages
 [https://docs.astro.build/en/guides/deploy/github/](https://docs.astro.build/en/guides/deploy/github/)
+
+
+
+
+
+
+
 
 
 
